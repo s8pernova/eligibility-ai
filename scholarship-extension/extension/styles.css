@@ -1,0 +1,67 @@
+:root {
+  --ink: #1f2a44;
+  --muted: #5b6478;
+  --paper: #ffffff;
+  --wash: #eef1f6;
+  --met: #2e7d4f;
+  --met-bg: #e6f3eb;
+  --not: #b3261e;
+  --not-bg: #fbe9e7;
+  --check: #8a5a00;
+  --check-bg: #fdf3dc;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+}
+body { margin: 0; background: var(--paper); }
+button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  border: none; border-radius: 6px; padding: 10px 14px;
+  background: var(--ink); color: #fff;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 2px;
+}
+a { color: var(--ink); }
+
+/* Popup */
+.popup { width: 340px; padding: 16px; }
+.popup h1 { font-size: 17px; margin: 0 0 4px; }
+.popup .sub { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+.popup button { width: 100%; }
+.message { font-size: 13px; margin-top: 12px; color: var(--muted); }
+.message.error { color: var(--not); }
+
+.verdict {
+  margin-top: 14px; padding: 14px; border-radius: 8px;
+  font-size: 18px; font-weight: 700;
+}
+.verdict small { display: block; font-size: 13px; font-weight: 400; margin-top: 2px; }
+.verdict.met { background: var(--met-bg); color: var(--met); }
+.verdict.not_met { background: var(--not-bg); color: var(--not); }
+.verdict.check { background: var(--check-bg); color: var(--check); }
+
+.results { list-style: none; padding: 0; margin: 10px 0 0; }
+.results li {
+  display: grid; grid-template-columns: 22px 1fr; gap: 8px;
+  padding: 9px 0; border-bottom: 1px solid var(--wash); font-size: 13px;
+}
+.results li:last-child { border-bottom: none; }
+.icon { font-weight: 700; text-align: center; }
+.icon.met { color: var(--met); }
+.icon.not_met { color: var(--not); }
+.icon.check { color: var(--check); }
+.results strong { display: block; }
+.footer { margin-top: 12px; font-size: 12px; color: var(--muted); }
+
+/* Settings page */
+.settings { max-width: 440px; margin: 40px auto; padding: 0 20px; }
+.settings h1 { font-size: 24px; margin-bottom: 4px; }
+.settings p { color: var(--muted); margin-top: 0; }
+.settings label { display: block; font-weight: 600; margin: 16px 0 6px; font-size: 14px; }
+.settings input, .settings select {
+  width: 100%; box-sizing: border-box; font: inherit;
+  padding: 9px 10px; border: 1px solid #c5ccd8; border-radius: 6px;
+}
+.settings button { margin-top: 22px; }
+#saved { margin-left: 10px; color: var(--met); font-size: 14px; }

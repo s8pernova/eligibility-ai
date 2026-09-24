@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My scholarship profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="settings">
+    <h1>My scholarship profile</h1>
+    <p>Saved only in this browser. It's never sent to the server.</p>
+
+    <label for="gpa">GPA</label>
+    <input id="gpa" type="number" min="0" max="5" step="0.01" placeholder="3.40">
+
+    <label for="major">Major</label>
+    <input id="major" type="text" placeholder="Computer Science">
+
+    <label for="state">State of residence</label>
+    <input id="state" type="text" maxlength="2" placeholder="VA">
+
+    <label for="enrollment">Enrollment</label>
+    <select id="enrollment">
+      <option value="full-time">Full-time</option>
+      <option value="part-time">Part-time</option>
+    </select>
+
+    <button id="save">Save profile</button><span id="saved" role="status"></span>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>
