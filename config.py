@@ -8,7 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 class Settings(BaseSettings):
-    pass
+    TITLE = "Eligibility AI"
+    VERSION = "0.1.0"
 
 
 @lru_cache
