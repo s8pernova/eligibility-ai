@@ -6,7 +6,7 @@ from typing import Annotated
 from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 class Settings(BaseSettings):
@@ -35,7 +35,7 @@ class Settings(BaseSettings):
 
     # LLM
     LLM_MODEL: Annotated[
-        str, Field(description="The LLM model to use for URL tiebreaking if enabled.")
+        str, Field(description="The model used to assess scholarship eligibility.")
     ] = "gpt-4o-mini"
 
     @property
