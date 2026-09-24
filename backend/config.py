@@ -3,7 +3,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Annotated
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -17,12 +17,30 @@ class Settings(BaseSettings):
         env_ignore_empty=True,
     )
 
+    # Metadata
     TITLE: Annotated[str, Field(description="The name of the application.")] = (
         "Eligibility AI"
     )
     VERSION: Annotated[
         str, Field(description="The current version of the application.")
     ] = "0.1.0"
+
+    # API
+    OPENAI_API_KEY: Annotated[
+        SecretStr,
+        Field(
+            description="API key for OpenAI services (e.g., LLM extraction, embeddings)."
+        ),
+    ]
+
+    # LLM
+    LLM_MODEL: Annotated[
+        str, Field(description="The LLM model to use for URL tiebreaking if enabled.")
+    ] = "gpt-4o-mini"
+
+    @property
+    def openai_api_key_str(self) -> str:
+        return self.OPENAI_API_KEY.get_secret_value()
 
 
 @lru_cache
