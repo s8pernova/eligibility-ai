@@ -1,15 +1,28 @@
 import os
 from functools import lru_cache
 from pathlib import Path
+from typing import Annotated
 
-from pydantic_settings import BaseSettings
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent
 
 
 class Settings(BaseSettings):
-    TITLE = "Eligibility AI"
-    VERSION = "0.1.0"
+    model_config = SettingsConfigDict(
+        case_sensitive=False,
+        extra="ignore",
+        env_file_encoding="utf-8",
+        env_ignore_empty=True,
+    )
+
+    TITLE: Annotated[str, Field(description="The name of the application.")] = (
+        "Eligibility AI"
+    )
+    VERSION: Annotated[
+        str, Field(description="The current version of the application.")
+    ] = "0.1.0"
 
 
 @lru_cache
